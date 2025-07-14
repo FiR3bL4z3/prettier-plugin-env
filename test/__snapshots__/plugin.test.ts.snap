@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Plugin Tests > formats '.env.01-basic' content 1`] = `
+[
+  ".env.01-basic",
+  "A = A
+B = B",
+]
+`;

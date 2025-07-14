@@ -2,12 +2,26 @@
   "name": "prettier-plugin-env",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "exports": "./src/index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test:format": "prettier --plugin ./dist/index.js --write .env",
+    "test": "vitest run"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.13.1"
+  "packageManager": "pnpm@10.13.1",
+  "peerDependencies": {
+    "prettier": "^3.6.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.13",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.2.4"
+  }
 }
