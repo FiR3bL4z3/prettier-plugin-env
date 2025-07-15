@@ -1,19 +1,19 @@
 import { describe, it, expect } from "vitest";
 import prettier from "prettier";
 import plugin from "@/index";
-import { readEnvFiles } from "./utils/read-env-files";
+import { readEnvTestCases } from "./utils/read-env-test-cases";
 
 describe("Plugin Tests", async () => {
-  const envFiles = await readEnvFiles();
+  const envFiles = await readEnvTestCases();
 
   it.each(envFiles)(
-    "formats $fileName content",
-    async ({ content, fileName }) => {
-      const output = await prettier.format(content, {
+    "formats $testCase content",
+    async ({ input, expected }) => {
+      const output = await prettier.format(input, {
         parser: "dotenv",
         plugins: [plugin],
       });
-      expect([fileName, output]).toMatchSnapshot();
+      expect(output).toEqual(expected);
     }
   );
 });

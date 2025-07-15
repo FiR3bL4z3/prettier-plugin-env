@@ -1,6 +1,8 @@
 import { describe, it, expect } from "vitest";
 import { DotenvNode, parser } from "@/parser";
 
+const parse = (input: string): DotenvNode[] => parser.parse(input, {} as any);
+
 describe("Parser Tests", () => {
   it("should parse a simple .env file", () => {
     const input = "Z=3\nA=1\nB=2";
@@ -9,7 +11,7 @@ describe("Parser Tests", () => {
       { type: "pair", key: "A", value: "1" },
       { type: "pair", key: "B", value: "2" },
     ];
-    expect(parser.parse(input, {} as any)).toEqual(expectedOutput);
+    expect(parse(input)).toEqual(expectedOutput);
   });
 
   it("should handle comments in .env files", () => {
@@ -19,7 +21,7 @@ describe("Parser Tests", () => {
       { type: "raw", value: "# This is a comment" },
       { type: "pair", key: "A", value: "1" },
     ];
-    expect(parser.parse(input, {} as any)).toEqual(expectedOutput);
+    expect(parse(input)).toEqual(expectedOutput);
   });
 
   it("should ignore empty lines in .env files", () => {
@@ -31,6 +33,6 @@ describe("Parser Tests", () => {
       { type: "pair", key: "A", value: "1" },
       { type: "raw", value: "" },
     ];
-    expect(parser.parse(input, {} as any)).toEqual(expectedOutput);
+    expect(parse(input)).toEqual(expectedOutput);
   });
 });
