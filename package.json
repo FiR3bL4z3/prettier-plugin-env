@@ -2,7 +2,7 @@
   "name": "prettier-plugin-env",
   "version": "1.0.0",
   "description": "",
-  "exports": "./src/index.js",
+  "exports": "./dist/index.js",
   "type": "module",
   "scripts": {
     "build": "tsup",
