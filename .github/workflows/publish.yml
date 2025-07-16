@@ -50,7 +50,7 @@ jobs:
 
       - name: Commit version bump
         run: |
-          git add package.json package-lock.json
+          git add .
           git commit -m "ci: bump version [skip ci]"
           git push
 
