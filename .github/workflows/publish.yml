@@ -50,6 +50,7 @@ jobs:
 
       - name: Commit version bump
         run: |
+          version=$(node -p "require('./package.json').version")
           git add .
           git commit -m "release: bump to $version via manual trigger [skip ci]"
           git push
