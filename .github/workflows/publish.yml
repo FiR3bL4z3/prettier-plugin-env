@@ -39,11 +39,6 @@ jobs:
       - name: Build package
         run: pnpm build
 
-      - name: Publish to npm
-        run: pnpm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       - name: Commit version bump
         run: |
           git config user.name "Release Bot"
@@ -51,3 +46,8 @@ jobs:
           git add .
           git commit -m "ci: bump version [skip ci]"
           git push
+
+      - name: Publish to npm
+        run: pnpm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
