@@ -1,9 +1,14 @@
 {
   "name": "prettier-plugin-env",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "exports": "./dist/index.js",
   "type": "module",
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
