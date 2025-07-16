@@ -51,7 +51,7 @@ jobs:
       - name: Commit version bump
         run: |
           git add .
-          git commit -m "ci: bump version [skip ci]"
+          git commit -m "release: bump to $version via manual trigger [skip ci]"
           git push
 
       - name: Publish to npm
