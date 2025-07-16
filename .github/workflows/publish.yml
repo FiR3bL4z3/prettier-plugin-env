@@ -27,6 +27,9 @@ jobs:
           node-version: "22"
           registry-url: "https://registry.npmjs.org/"
 
+      - name: Install pnpm
+        run: npm install -g pnpm@10.13.1
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
@@ -45,6 +48,6 @@ jobs:
         run: |
           git config user.name "Release Bot"
           git config user.email "noreply@github.com"
-          git add package.json package-lock.json
+          git add .
           git commit -m "ci: bump version [skip ci]"
           git push
