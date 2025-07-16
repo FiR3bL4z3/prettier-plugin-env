@@ -13,6 +13,9 @@ on:
           - minor
           - major
 
+permissions:
+  contents: write
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -39,11 +42,15 @@ jobs:
       - name: Build package
         run: pnpm build
 
+      - name: Authenticate with GitHub
+        run: |
+          git config --global user.name "Release Bot"
+          git config --global user.email "noreply@github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+
       - name: Commit version bump
         run: |
-          git config user.name "Release Bot"
-          git config user.email "noreply@github.com"
-          git add .
+          git add package.json package-lock.json
           git commit -m "ci: bump version [skip ci]"
           git push
 
