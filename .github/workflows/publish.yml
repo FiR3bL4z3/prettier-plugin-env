@@ -34,7 +34,7 @@ jobs:
         run: pnpm version ${{ github.event.inputs.bump }} --no-git-tag-version
 
       - name: Build package
-        run: pnpm  build
+        run: pnpm build
 
       - name: Publish to npm
         run: pnpm publish --access public
