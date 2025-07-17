@@ -1,15 +1,5 @@
 import { Parser } from "prettier";
-
-export type DotenvNode =
-  | {
-      type: "pair";
-      key: string;
-      value: string;
-    }
-  | {
-      type: "raw";
-      value: string;
-    };
+import { DotenvNode } from "./types/dotenv-node";
 
 const parse: Parser<DotenvNode[]>["parse"] = (text) => {
   const lines = text.split("\n");
