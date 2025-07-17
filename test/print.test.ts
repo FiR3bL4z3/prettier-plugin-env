@@ -57,7 +57,7 @@ describe("Printer Tests", () => {
     expect(print(input)).toEqual(expectedOutput);
   });
 
-  it("should format a .env file with differnt key lengths", () => {
+  it("should format a .env file with different key lengths", () => {
     const input: DotenvNode[] = [
       { type: "pair", key: "A", value: "1" },
       { type: "pair", key: "BB", value: "2" },
