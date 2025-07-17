@@ -13,7 +13,9 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "test:format": "prettier --plugin ./dist/index.js --write .env",
-    "test": "vitest run"
+    "test:ci": "vitest run",
+    "test": "vitest",
+    "types": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",

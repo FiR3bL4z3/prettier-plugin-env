@@ -1,27 +1,16 @@
 import { Printer } from "prettier";
-import { DotenvNode } from "./parser";
 
-const getMaxKeyLength = (nodes: DotenvNode[]) => {
-  return nodes.reduce((max, node) => {
-    if (node.type === "pair" && node.key) {
-      return Math.max(max, node.key.length);
-    }
-    return max;
-  }, 0);
-};
+import { transform } from "./utils/transform";
+import { DotenvNode } from "./types/dotenv-node";
+import { transformAlignSpaces } from "./transformers/transform-align-spaces";
+import { joinLine } from "./lib/join-line";
+import { transformOrder } from "./transformers/transform-order";
 
 const print: Printer<DotenvNode[]>["print"] = (path) => {
   const ast = path.stack[0];
-  const maxKeyLength = getMaxKeyLength(ast);
-  return ast
-    .map((node) => {
-      if (node.type === "pair") {
-        const paddedKey = node.key.padEnd(maxKeyLength, " ");
-        return `${paddedKey} = ${node.value}`;
-      }
-      return node.value;
-    })
-    .join("\n");
+
+  const transformedAst = transform(ast, [transformOrder, transformAlignSpaces]);
+  return transformedAst.map((node) => joinLine(node)).join("\n");
 };
 
 export const printer: Printer = {
