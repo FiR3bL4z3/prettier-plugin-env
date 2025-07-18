@@ -6,7 +6,7 @@ const languages = [
   {
     name: "dotenv",
     parsers: ["dotenv"],
-    extensions: [".env", ".env.*"],
+    extensions: [".env", ".env*"],
   },
 ];
 
