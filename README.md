@@ -11,8 +11,9 @@
 ## 💡 Why use this?
 
 - Auto‑formats `.env` files with Prettier.
+- Auto orders key in alphabetical order.
 - Aligns `KEY=VALUE` pairs neatly.
-- Consistently quotes values when needed.
+- Consistently quotes values when necessary.
 - Preserves comments and blank lines.
 - Helps maintain clean, version-controlled env files.
 
@@ -24,6 +25,8 @@
 npm install --save-dev prettier prettier-plugin-env
 # or
 yarn add --dev prettier prettier-plugin-env
+# or
+pnpm add --save-dev prettier prettier-plugin-env
 ```
 
 ---
@@ -85,20 +88,9 @@ Works with Prettier v3.x and above. No additional peer dependencies required.
 
 ---
 
-## 🔄 Integrate in CI
-
-To ensure consistent formatting in CI workflows (GitHub Actions, GitLab CI, etc.):
-
-```yaml
-- run: npm install --save-dev prettier prettier-plugin-env
-- run: npx prettier --check .env
-```
-
----
-
 ## 🧪 Testing
 
-Tests use Jest. Run:
+Tests use Vitest. Run:
 
 ```bash
 npm test
@@ -113,21 +105,35 @@ Ensure your test suite covers key formatting scenarios—quotes, alignment, comm
 **Before `.env`**
 
 ```env
-DB_HOST=localhost
-DB_PORT=5432
-API_KEY=abc123 DEF
-# Comment line
-SOME_FLAG=true
+B=BB
+# Comment for A
+AAAAA=AA
+# Comment for C
+# Another comment for C
+C=CC
+# Comment for E
+EE=EE
+
+# Comment for D
+DDD=DD
+# Random trailing comment
 ```
 
 **After formatting**
 
 ```env
-DB_HOST    = "localhost"
-DB_PORT    = 5432
-API_KEY    = "abc123 DEF"
-# Comment line
-SOME_FLAG = true
+# Comment for A
+AAAAA = AA
+B     = BB
+# Comment for C
+# Another comment for C
+C     = CC
+
+# Comment for D
+DDD   = DD
+# Comment for E
+EE    = EE
+# Random trailing comment
 ```
 
 ---
@@ -155,7 +161,7 @@ We follow **Semantic Versioning (semver)**: `MAJOR.MINOR.PATCH`
 
 ## ✅ License
 
-MIT © [Your Name](https://github.com/yourusername)
+MIT © [Balázs Horváth](https://github.com/FiR3bL4z3)
 
 ---
 
@@ -163,7 +169,7 @@ MIT © [Your Name](https://github.com/yourusername)
 
 - [npm package](https://www.npmjs.com/package/prettier-plugin-env)
 - [Changelog](CHANGELOG.md)
-- [Issues](https://github.com/yourusername/prettier-plugin-env/issues)
+- [Issues](https://github.com/FiR3bL4z3/prettier-plugin-env/issues)
 
 ---
 
