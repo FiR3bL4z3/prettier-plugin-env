@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { DotenvNode, parser } from "@/parser";
+import { parser } from "@/parser";
+import { DotenvNode } from "@/types/dotenv-node";
 
 const parse = (input: string): DotenvNode[] => parser.parse(input, {} as any);
 
