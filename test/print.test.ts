@@ -7,7 +7,10 @@ const print = (input: DotenvNode[]) =>
     {
       stack: [input],
     } as any,
-    {} as any,
+    {
+      envAlign: true,
+      envOrder: true,
+    } as any,
     {} as any
   );
 

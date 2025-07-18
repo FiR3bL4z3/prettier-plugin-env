@@ -1,6 +1,6 @@
 import { parser } from "./parser";
 import { printer } from "./printer";
-import { Plugin } from "prettier";
+import { Plugin, SupportOptions } from "prettier";
 
 const languages = [
   {
@@ -10,6 +10,21 @@ const languages = [
   },
 ];
 
+const options: SupportOptions = {
+  envAlign: {
+    type: "boolean",
+    category: "env",
+    default: false,
+    description: "Align equal signs in .env files",
+  },
+  envOrder: {
+    type: "boolean",
+    category: "env",
+    default: true,
+    description: "Sort keys in .env files",
+  },
+};
+
 const plugin: Plugin = {
   languages,
   parsers: {
@@ -18,10 +33,7 @@ const plugin: Plugin = {
   printers: {
     "dotenv-ast": printer,
   },
-  options: {
-    // Define any plugin-specific options here
-    // For example, you could add an option to control the formatting style
-  },
+  options,
 };
 
 export default plugin;

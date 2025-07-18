@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-env",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "",
   "exports": "./dist/index.js",
   "module": "./dist/index.js",
