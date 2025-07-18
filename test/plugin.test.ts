@@ -12,6 +12,8 @@ describe("Plugin Tests", async () => {
       const output = await prettier.format(input, {
         parser: "dotenv",
         plugins: [plugin],
+        envAlign: true,
+        envOrder: true,
       });
       expect(output).toEqual(expected);
     }
