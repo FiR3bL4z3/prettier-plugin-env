@@ -6,7 +6,25 @@ const languages = [
   {
     name: "dotenv",
     parsers: ["dotenv"],
-    extensions: [".env", ".env*"],
+    extensions: [
+      ".env",
+      ".env.development",
+      ".env.development.local",
+      ".env.dev",
+      ".env.dev.local",
+      ".env.feature",
+      ".env.feature.local",
+      ".env.local",
+      ".env.preview",
+      ".env.preview.local",
+      ".env.production",
+      ".env.production.local",
+      ".env.staging",
+      ".env.staging.local",
+      ".env.test",
+      ".env.test.local",
+    ],
+    filenames: [".env"],
   },
 ];
 
